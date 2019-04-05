@@ -1,0 +1,22 @@
+/*
+ * Build file for org/maroonyeti/effective-java code kata project.
+ */
+
+plugins {
+
+  id 'java'
+  id 'application'
+}
+
+repositories {
+
+  jcenter()
+  mavenCentral()
+}
+
+dependencies {
+
+  testImplementation 'junit:junit:4.12'
+}
+
+mainClassName = 'org/maroonyeti/effective-java.App'
