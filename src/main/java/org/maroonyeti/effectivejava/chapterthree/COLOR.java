@@ -1,7 +1,7 @@
 package org.maroonyeti.effectivejava.chapterthree;
 
-public enum Color {
-	
+public enum COLOR {
+
 	WHITE,
 	BLUE,
 	YELLOW,
