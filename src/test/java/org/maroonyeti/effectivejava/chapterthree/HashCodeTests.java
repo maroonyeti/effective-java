@@ -4,76 +4,65 @@ import static org.maroonyeti.effectivejava.chapterthree.COLOR.*;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
-public class EqualsContractTests {
-
+public class HashCodeTests {
+  
   @Test
-  public void equals_ReflexivityProperty_SameInstance_IsEqual() {
-
+  public void testHashCode_ReflexivityProperty_SameInstances_IsEqual() {
+    
     StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
 
-    assertThat(oStarReal).isEqualTo(oStarReal);
+    assertThat(oStarReal.hashCode()).isEqualTo(oStarReal.hashCode());
+    
   }
-
+  
   @Test
-  public void equals_SymmetryProperty_DiffIntances_SameValues_IsEqual() {
-
+  public void testHashCode_SymmetryProperty_DiffInstances_SameValues_IsEqual() {
+    
     StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
     StarClassification oStarReal2 = new StarClassification(BLUE, 30000, 60, 15);
 
-    assertThat(oStarReal).isEqualTo(oStarReal2);
-    assertThat(oStarReal2).isEqualTo(oStarReal);
+    assertThat(oStarReal.hashCode()).isEqualTo(oStarReal2.hashCode());
   }
-
+  
   @Test
-  public void equals_TransitivityProperty_DiffInstances_SameValues_IsEqual() {
-
+  public void testHashCode_TransitivityProperty_DiffInstances_SameValues_IsEqual() {
+    
     StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
     StarClassification oStarReal2 = new StarClassification(BLUE, 30000, 60, 15);
     StarClassification oStarReal3 = new StarClassification(BLUE, 30000, 60, 15);
 
-    assertThat(oStarReal).isEqualTo(oStarReal2);
-    assertThat(oStarReal).isEqualTo(oStarReal3);
-    assertThat(oStarReal3).isEqualTo(oStarReal2);
-
+    assertThat(oStarReal.hashCode()).isEqualTo(oStarReal2.hashCode());
+    assertThat(oStarReal2.hashCode()).isEqualTo(oStarReal3.hashCode());
   }
-
+  
   @Test
-  public void equals_ConsistencyProperty_DiffInstances_SameValues_IsEqualEachTime() {
-
+  public void testHashCode_ConsistencyProperty_DiffInstances_SameValues_IsEqualEachTime() {
+    
     StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
     StarClassification oStarReal2 = new StarClassification(BLUE, 30000, 60, 15);
 
     for (int i = 1; i <= 100000; i++) {
-      assertThat(oStarReal).isEqualTo(oStarReal2);
+      assertThat(oStarReal.hashCode()).isEqualTo(oStarReal2.hashCode());
     }
   }
-
+  
   @Test
-  public void equals_ConsistencyProperty_DiffInstances_DiffValues_IsNotEqualEachTime() {
+  public void testHashCode_ConsistencyProperty_DiffInstances_DiffValues_IsNotEqualEachTime() {
 
     StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
     StarClassification oStarReal2 = new StarClassification(BLUE, 12, 60, 15);
 
     for (int i = 1; i <= 100000; i++) {
-      assertThat(oStarReal).isNotEqualTo(oStarReal2);
+      assertThat(oStarReal.hashCode()).isNotEqualTo(oStarReal2.hashCode());
     }
   }
-
+  
   @Test
-  public void equals_NonNullityProperty_DiffInstances_NullValue_NotEqual() {
+  public void testHashCode_NonNullityProperty_DiffInstances_NullValue_NotEqual() {
 
     StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
     StarClassification nullStar = new StarClassification(null, 0, 0, 0);
 
-    assertThat(oStarReal).isNotEqualTo(nullStar);
-  }
-
-  @Test
-  public void equals_DiffInstances_DiffValues_NotEqual() {
-
-    StarClassification oStarReal = new StarClassification(BLUE, 30000, 60, 15);
-    StarClassification oStarFake = new StarClassification(RED, 30000, 1, 15);
-
-    assertThat(oStarReal).isNotEqualTo(oStarFake);
+    assertThat(oStarReal.hashCode()).isNotEqualTo(nullStar.hashCode());
   }
 }
