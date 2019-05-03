@@ -37,4 +37,17 @@ public class StarClassification {
     }
     return result;
   }
+
+  @Override
+  public int hashCode() {
+    
+    int result = 1;
+    
+    result = 13 * result + approximateSurfaceTemp;
+    result = 13 * result + avgSolarMasses;
+    result = 13 * result + avgSolarRadii;
+    result = 13 * result + ((color == null) ? 0 : color.hashCode());
+    
+    return result;
+  }
 }
