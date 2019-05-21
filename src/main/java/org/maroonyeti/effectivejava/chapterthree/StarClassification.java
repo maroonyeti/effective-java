@@ -13,19 +13,19 @@ public class StarClassification {
 
   private int approximateSurfaceTemp;
 
-  private int avgSolarMasses;
+  private double avgSolarMasses;
 
-  private int avgSolarRadii;
+  private double avgSolarRadii;
 
-  public StarClassification(COLOR color, int approximateSurfaceTemp, int avgSolarMasses,
-      int avgSolarRadii) {
+  public StarClassification(COLOR color, int approximateSurfaceTemp, double avgSolarMasses,
+		  double avgSolarRadii) {
     this.color = color;
     this.approximateSurfaceTemp = approximateSurfaceTemp;
     this.avgSolarMasses = avgSolarMasses;
     this.avgSolarRadii = avgSolarRadii;
   }
 
-  @Override
+@Override
   public boolean equals(Object obj) {
     boolean result = false;
     if (obj instanceof StarClassification) {
@@ -44,8 +44,8 @@ public class StarClassification {
     int result = 1;
     
     result = 13 * result + approximateSurfaceTemp;
-    result = 13 * result + avgSolarMasses;
-    result = 13 * result + avgSolarRadii;
+    result = (int) (13 * result + avgSolarMasses);
+    result = (int) (13 * result + avgSolarRadii);
     result = 13 * result + ((color == null) ? 0 : color.hashCode());
     
     return result;
