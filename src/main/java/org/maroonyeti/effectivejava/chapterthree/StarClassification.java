@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class StarClassification {
+public class StarClassification implements StarClassificationSorting{
 
   private COLOR color;
 
